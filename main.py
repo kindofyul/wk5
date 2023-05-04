@@ -18,11 +18,11 @@ def create_membership():
             hangeul = re.compile('^[ㄱ-힇]$')
             hangeul_check = hangeul.match(username)
             # 한국어만 입력..?
-            if len(username) >= 2 and len(username) <= 4:
+            if len(username) >= 2 and len(username) <= 4 and hangeul_check:
                 print("사용 가능한 아이디입니다")
                 break
             else:
-                print("2~4 글자 사이로 입력하세요")
+                print("2~4 글자 사이 한글로 입력하세요")
                 continue
 
         while True:
@@ -47,7 +47,7 @@ def create_membership():
             email = input("이메일을 입력하세요 \n>>")
             regex_email = r"^[a-z0-9]+?[a-z0-9]+[@]\w+[.]\w+[.]?\w{2,3}$"
             valid = re.search(regex_email, email)
-            if "@" in email and email.endswith(".com") == True:  # 영문, 숫자만 입력?
+            if "@" in email and email.endswith(".com") == True and valid:  # 영문, 숫자만 입력?
                 break
             else:
                 print("올바르지 않은 이메일입니다")
